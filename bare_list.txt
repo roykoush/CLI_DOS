@@ -1,0 +1,5 @@
+bare_list.txt
+Data
+gnuplot
+system_report.txt
+test.txt
