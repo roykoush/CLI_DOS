@@ -14,12 +14,16 @@ header-includes:
   - \fancyhead[R]{\thepage}
   - \renewcommand{\headrulewidth}{0.5pt} 
   - \fancypagestyle{plain}{\fancyhf{}}
-  - \setkeys{Gin}{width=0.8\textwidth}
+  - \setkeys{Gin}{width=0.6\textwidth}
   - \usepackage{fvextra}
   - \usepackage{framed}
   - \fvset{breaklines=true}
   - \definecolor{shadecolor}{RGB}{248,248,248}
   - \renewenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+  - \usepackage{float}
+  - \makeatletter
+  - \def\fps@figure{H}
+  - \makeatother
 ---
 <!-- The YAML block sits above this -->
 
@@ -223,4 +227,6 @@ This was the one suggested in the lab however the version for MacOS is depreciat
 
 ## 4. Conclusion
 
-Using CLI for running commands is way faster than using GUI and essentially more streamlined when the number of files and folders is large and we need to run some commands like finding certain keywords or force delete something.
+The advantage of CLI (vs GUI) compounds as the number of files and folders grows when in comparison, the GUI equivalent gets slower, boring and more error-prone as scale increases.
+
+Beyond speed, the CLI (unlike GUI) allows repeating the exact same commands very easily. In MacOS, for example, you could press `Ctrl+R` and repeat any command from history, eliminating the need for retyping. This distinction matters greatly since one does not get the matter at hand succesfully at first go most of the times.
