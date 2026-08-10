@@ -15,6 +15,11 @@ header-includes:
   - \renewcommand{\headrulewidth}{0.5pt} 
   - \fancypagestyle{plain}{\fancyhf{}}
   - \setkeys{Gin}{width=0.8\textwidth}
+  - \usepackage{fvextra}
+  - \usepackage{framed}
+  - \fvset{breaklines=true}
+  - \definecolor{shadecolor}{RGB}{248,248,248}
+  - \renewenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
 ---
 <!-- The YAML block sits above this -->
 
@@ -28,7 +33,7 @@ header-includes:
     \textbf{Paper Code:} C1PH230112P \\
     \textbf{Subject:} Clab - 1, UG (Physics) \\
     \textbf{Institution:} St. Xavier's College (Autonomous), Kolkata \\
-    \textbf{Date:} August 3, 2026
+    \textbf{Date:} August 10, 2026
   }%
 }
 
@@ -40,7 +45,7 @@ header-includes:
 
 The Command Line interface (CLI) provides a faster way to relay instructions to the computer as opposed to clicking through a Graphical User Interface (GUI). This makes it much easier and less time intensive to perform repititive tasks and automate some other kinds of operations. 
 
-- Commands shown in Class:
+### 1.1 Commands shown in Class:
 
 ```Bash
 # Win + R -> cmd
@@ -91,9 +96,10 @@ cls
 ```
 
 ![Example Output](images/wind_sim_cl_work.png)
+
 *Note: Since I lack a Windows device, a online simulator has been used.*
 
-- Commands in Factsheet:
+### 1.2 Commands in Factsheet:
 
 ```Bash
 del /p 
@@ -118,7 +124,7 @@ where python
 
 ![Sample Output on Simulator](images/wind_sim_fct.png)
 
-*Note: It is worth mentioning I couldn't run all the outputs on a simulator. However the tasks in section 2 was performed on a real Windows machine last week hence are realistic.*
+*Note: It is worth mentioning I couldn't run all the outputs on a simulator. However the tasks in section two were performed on a real Windows machine last week hence are realistic.*
 
 ## 2. Commands and Outputs
 
@@ -157,7 +163,6 @@ cd ..
 
 ```Bash
 type system_report.txt
-
 ```
 
 ![Task 4](images/Task4.jpeg)
@@ -178,12 +183,8 @@ cls
 cd gnuplot 
 "C:\Program Files\gnuplot\bin\gnuplot.exe" 
 plot sin(x)
-
 ```
-
-![Task 6 - Script](Task6.jpeg)
-
-Graph:
+![Task 6 - Script](images/Task6.jpeg)
 
 ![Task 6 - Plot](images/Task6_gnu.jpeg)
 
@@ -210,9 +211,13 @@ The packages notably mentioned in Lab to be installed included:
 - GnuPlot
 - Python
 
-**About Python:** It is worth noting that instead of using the native `pip` globally, I prefer creating a virtual environment per project and locally install any module I need. This is a precaution against certain dependency conflicts (like different projects needing different versions)  that I have faced in the past and a certain `error: externally-managed-environment` too.
+### About Python
 
-**About MarkText:** This was the one suggested in the lab however the version for MacOS is depreciated and hence I switched to using `VSCode` with proper extensions.
+It is worth noting that instead of using the native `pip` globally, I prefer creating a virtual environment per project and locally install any module I need. This is a precaution against certain dependency conflicts (like different projects needing different versions)  that I have faced in the past and a certain `error: externally-managed-environment` too.
+
+### About MarkText 
+
+This was the one suggested in the lab however the version for MacOS is depreciated and hence I switched to using `VSCode` with proper extensions. Also, worth mentioning, I used the `xelatex` renderer with pandoc since I had used that before and already had a compatible yaml template.
 
 ![Depreciation Message](images/mark-text.png)
 
