@@ -49,7 +49,7 @@ header-includes:
 
 The Command Line interface (CLI) provides a faster way to relay instructions to the computer as opposed to clicking through a Graphical User Interface (GUI). This makes it much easier and less time intensive to perform repititive tasks and automate some other kinds of operations. 
 
-### 1.1 Commands shown in Class:
+### 1.1 Commands shown in Class
 
 ```Bash
 # Win + R -> cmd
@@ -103,7 +103,7 @@ cls
 
 *Note: Since I lack a Windows device, a online simulator has been used.*
 
-### 1.2 Commands in Factsheet:
+### 1.2 Commands in Factsheet
 
 ```Bash
 del /p 
@@ -215,11 +215,11 @@ The packages notably mentioned in Lab to be installed included:
 - GnuPlot
 - Python
 
-### About Python
+### 3.1 About Python
 
 It is worth noting that instead of using the native `pip` globally, I prefer creating a virtual environment per project and locally install any module I need. This is a precaution against certain dependency conflicts (like different projects needing different versions)  that I have faced in the past and a certain `error: externally-managed-environment` too.
 
-### About MarkText 
+### 3.2 About MarkText 
 
 This was the one suggested in the lab however the version for MacOS is depreciated and hence I switched to using `VSCode` with proper extensions. Also, worth mentioning, I used the `xelatex` renderer with pandoc since I had used that before and already had a compatible yaml template.
 
