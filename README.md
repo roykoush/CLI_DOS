@@ -53,4 +53,5 @@ header-includes:
 \pagebreak
 ```
 
+---
 Apart from `xelatex` engine, if you use a lightweight distribution layer like `BasicTex`, you have to manually fetch `soul`, `luacolor`, `luacolor` (unnecessary except for document underlines using LaTex). The TeX Live Manager `tlmgr` should be used.
