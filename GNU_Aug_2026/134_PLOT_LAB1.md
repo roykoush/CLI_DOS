@@ -41,11 +41,9 @@ header-includes:
 
 \pagebreak
 
-## 1. Lab 1 - Plotting Functions
+## Lab 1 - Plotting Functions
 
 ### 1.1 Intialisation
-
-
 
 #### Windows
 
@@ -104,9 +102,9 @@ The part `[:]`  lets the y-axis autoscale. You can stack subsequent functions in
 
 ![Default Linestytle 2 and 7 respectively for $sinx$ and $cosx$](images/lc_ex1.png)
 
-`ls` stands for linestyle (one of the presets gnuplot comes with, different presets have different colour or dash pattern combos). However you can explicitely force features on the linestyles too for example, `lc 'blue` forces linecolour blue on whatever colour linestyle 7 would have defaulted to. 
+`ls` stands for linestyle (one of the presets gnuplot comes with, different presets have different colour or dash pattern combos). However you can explicitely force features on the linestyles too for example, `lc 'blue'` forces linecolour blue on whatever colour linestyle 7 would have defaulted to. 
 
-`lw` stands for landwidth and determines how bold the lines are. 
+`lw` stands for linewidth and determines how bold the lines are. 
 
 ![Forcing the colour blue on the linestyle 7 with def red](images/lc_Ex2.png)
 
@@ -126,5 +124,64 @@ The part `[:]`  lets the y-axis autoscale. You can stack subsequent functions in
         gnuplot> h(x) = x**2 - 2**x + 1 
         gnuplot> plot h(x)
 ```
+
+## Lab 2 - More gnuplot
+
+### 2.1 Entering points to a data block and plotting
+
+The data block is named `$name_of_block` and a end-of-line character is specified with a `<<` and data entry is taken per line, columns of two.
+
+```bash
+gnuplot> h(x) = sin(x)
+gnuplot> $data << EOD 
+1.56 0.9998 
+2.34 0.567
+EOD
+gnuplot> ![alt text](image.png)
+```
+
+### 2.2 Loading code from a file
+
+Provided you are in same directory as the file (quick check with `pwd`), it can be loaded with the `load` command. File extension is generally `txt` and it is customary to use `_plt`. In the prospective text file it is advised to use a `reset` command at beginning to restore default settings.
+
+```bash
+gnuplot> load 'mysine_plt.txt' 
+gnuplot> load 'mysine_plt.txt'
+```
+
+### 2.3 Setting titles and labels
+
+The x and y axes names are customisable using `xlabel` and `ylabel` respectively. The function names can also be specified using `title`.
+
+![Naming figures]()
+
+```bash
+gnuplot> set xlabel 'x'
+gnuplot> set ylabel 'y'
+gnuplot> f(x) = sin(1/x)
+gnuplot> g(x) = cos(1/x)
+gnuplot> plot [-2*pi:2*pi] f(x) lw 2 title 'sine curve', g(x) lw 2 title 'cosine curve'
+```
+
+### 2.4 Adjusting Sampling in a Range
+
+Increasing sample sizes makes curve smoother. Using `replot` instead of typing same cmd also works.
+
+```bash
+gnuplot> show sample
+
+        sampling rate is 100, 100 #default sampling size
+
+gnuplot> plot sin(1/x)
+gnuplot> set samples 1000
+gnuplot> plot sin(1/x) #smoother curve
+
+```
+
+![Sample size: 100 for $\sin\left(\frac{1}{x}\right)$]()
+
+![Sample size: 1000 for $\sin\left(\frac{1}{x}\right)$]()
+
+## Exercises from GNUPLOT 2-D Factsheet
 
 ---
