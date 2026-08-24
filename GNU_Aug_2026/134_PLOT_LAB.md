@@ -140,6 +140,8 @@ EOD
 gnuplot> ![alt text](image.png)
 ```
 
+![Crosshairs mark the data points](images/data.png)
+
 ### 2.2 Loading code from a file
 
 Provided you are in same directory as the file (quick check with `pwd`), it can be loaded with the `load` command. File extension is generally `txt` and it is customary to use `_plt`. In the prospective text file it is advised to use a `reset` command at beginning to restore default settings.
@@ -153,7 +155,7 @@ gnuplot> load 'mysine_plt.txt'
 
 The x and y axes names are customisable using `xlabel` and `ylabel` respectively. The function names can also be specified using `title`.
 
-![Naming figures]()
+![Naming figures](images/labels.png)
 
 ```bash
 gnuplot> set xlabel 'x'
@@ -165,7 +167,7 @@ gnuplot> plot [-2*pi:2*pi] f(x) lw 2 title 'sine curve', g(x) lw 2 title 'cosine
 
 ### 2.4 Adjusting Sampling in a Range
 
-Increasing sample sizes makes curve smoother. Using `replot` instead of typing same cmd also works.
+Increasing sample sizes makes curve more detailed, smoother. 
 
 ```bash
 gnuplot> show sample
@@ -177,11 +179,12 @@ gnuplot> set samples 1000
 gnuplot> plot sin(1/x) #smoother curve
 
 ```
+The default sampling size is 100.
 
-![Sample size: 100 for $\sin\left(\frac{1}{x}\right)$]()
+![Sample size: 100 for $\sin\left(\frac{1}{x}\right)$](images/low.png)
 
-![Sample size: 1000 for $\sin\left(\frac{1}{x}\right)$]()
+We set the sampling size to 1000 for a more detailed portion in the around zero range. Using `replot` instead of typing same cmd also works.
 
-## Exercises from GNUPLOT 2-D Factsheet
+![Sample size: 1000 for $\sin\left(\frac{1}{x}\right)$](images/high.png)
 
 ---
