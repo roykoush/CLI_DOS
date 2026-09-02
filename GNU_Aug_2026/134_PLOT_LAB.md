@@ -125,7 +125,7 @@ The part `[:]`  lets the y-axis autoscale. You can stack subsequent functions in
         gnuplot> plot h(x)
 ```
 
-## Lab 2 - More gnuplot
+## Lab 2 - More Gnuplot
 
 ### 2.1 Entering points to a data block and plotting
 
