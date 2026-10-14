@@ -1,5 +1,5 @@
 ---
-title: "Command Line Interface and DOS Experience"
+title: "CLI and DOS Experience + Tasks"
 mainfont: "Times New Roman"
 monofont: "Courier New"
 fontsize: 12pt
@@ -37,7 +37,7 @@ header-includes:
     \textbf{Paper Code:} C1PH230112P \\
     \textbf{Subject:} Clab - 1, UG (Physics) \\
     \textbf{Institution:} St. Xavier's College (Autonomous), Kolkata \\
-    \textbf{Date:} August 10, 2026
+    \textbf{Date:} 14 Oct, 2026
   }%
 }
 
@@ -130,79 +130,35 @@ where python
 
 *Note: It is worth mentioning I couldn't run all the outputs on a simulator. However the tasks in section two were performed on a real Windows machine last week hence are realistic.*
 
-## 2. Commands and Outputs
+### 1.3 Introduction to Markdown
 
-### 2.1 [Task 1: Directory creation and verification]{.underline}
+Markdown is the go-to method for digitally recording information for scientific purposes. The process of styling your documents is much simpler in `.md` files versus `.docx` files which is one of the reasons to prefer markdown. Multiple markdown editors exist in the market. To convert a markdown file to PDF one can use `pandoc` which can be installed using HomeBrew in MacOS. 
 
-```bash
-cd PHY134SEM12026 
-mkdir CLI_DOS_July2026 
-cd CLI_DOS_July2026 dir /p
+```markdown
+**Apple** 
+#Bold
+*Apple*
+#Italics
+#We are using marktext for md files
+#In MarkText Ctrl+P to go to Editor View.
 
-```
+![ ](imgName.png ) #insertion of images
+# ! means 'show me'
 
-![Task 1](images/Task1.jpeg)
+Hey this is an eqn $ inline eqn $
 
-### 2.2 [Task 2:  File creation]{.underline}
-
-```Bash
-echo CLI DOS Experiment Notes > notes.txt 
-type notes.txt 
-more notes.txt 
-```
-
-![Task 2](images/Task2.jpeg)
-
-### 2.3 [Task 3:  File Relocation]{.underline}
-
-```Bash
-mkdir Data move notes.txt Data 
-cd Data dir 
-cd .. 
-```
-
-![Task 3](images/Task3.jpeg)
-
-### 2.4 [Task 4: System Diagnostics Script]{.underline}
-
-```Bash
-type system_report.txt
-```
-
-![Task 4](images/Task4.jpeg)
-
-### 2.5 [Task 5: Txt File Creation and update]{.underline}
-
-```Bash
-echo Test File > test.txt
-echo Updated on %DATE% >> test.txt
-cls
-```
-
-![Task 5](images/Task5.jpeg)
-
-### 2.6 [Task 6: sin(x) Plotting]{.underline}
-
-```Bash
-cd gnuplot 
-"C:\Program Files\gnuplot\bin\gnuplot.exe" 
-plot sin(x)
-```
-![Task 6 - Script](images/Task6.jpeg)
-
-![Task 6 - Plot](images/Task6_gnu.jpeg)
-
-### 2.7 [Task 7: Directory listing ]{.underline}
-
-```Bash
-dir /b > bare\_list.txt 
-more bare\_list.txt
+$$ in new para line to initiate a lone standing eqn then type your eqn:
 
 ```
+To demondstrate the usage of these features, we were instructed to create markdown files in class (`apples.md`)
 
-![Task 7](images/Task7.jpeg)
 
-## 3. Experience (Workspace setup, MacOS)
+Notable equation example shown:
+
+$i\hbar \frac{\partial}{\partial t} \Psi(\mathbf{r}, t) = \left[ -\frac{\hbar^2}{2m} \nabla^2 + V(\mathbf{r}, t) \right] \Psi(\mathbf{r}, t)$
+
+
+## 2. Experience (Workspace setup, MacOS)
 
 Since I am on a machine running MacOS, the process of installation differs vastly from the one in Windows.
 
@@ -215,18 +171,87 @@ The packages notably mentioned in Lab to be installed included:
 - GnuPlot
 - Python
 
-### 3.1 About Python
+### 2.1 About Python
 
 It is worth noting that instead of using the native `pip` globally, I prefer creating a virtual environment per project and locally install any module I need. This is a precaution against certain dependency conflicts (like different projects needing different versions)  that I have faced in the past and a certain `error: externally-managed-environment` too.
 
-### 3.2 About MarkText 
+### 2.2 About MarkText 
 
 This was the one suggested in the lab however the version for MacOS is depreciated and hence I switched to using `VSCode` with proper extensions. Also, worth mentioning, I used the `xelatex` renderer with pandoc since I had used that before and already had a compatible yaml template.
 
 ![Depreciation Message](images/mark-text.png)
 
-## 4. Conclusion
 
-The advantage of CLI (vs GUI) compounds as the number of files and folders grows when in comparison, the GUI equivalent gets slower, boring and more error-prone as scale increases.
+## 3. Commands and Outputs
 
-Beyond speed, the CLI (unlike GUI) allows repeating the exact same commands very easily. In MacOS, for example, you could press `Ctrl+R` and repeat any command from history, eliminating the need for retyping. This distinction matters greatly since one does not get the matter at hand succesfully at first go most of the times.
+### 3.1 [Task 1: Directory creation and verification]{.underline}
+
+```bash
+cd PHY134SEM12026 
+mkdir CLI_DOS_July2026 
+cd CLI_DOS_July2026 dir /p
+
+```
+
+![Task 1](images/Task1.jpeg)
+
+### 3.2 [Task 2:  File creation]{.underline}
+
+```Bash
+echo CLI DOS Experiment Notes > notes.txt 
+type notes.txt 
+more notes.txt 
+```
+
+![Task 2](images/Task2.jpeg)
+
+### 3.3 [Task 3:  File Relocation]{.underline}
+
+```Bash
+mkdir Data move notes.txt Data 
+cd Data dir 
+cd .. 
+```
+
+![Task 3](images/Task3.jpeg)
+
+### 3.4 [Task 4: System Diagnostics Script]{.underline}
+
+```Bash
+type system_report.txt
+```
+
+![Task 4](images/Task4.jpeg)
+
+### 3.5 [Task 5: Txt File Creation and update]{.underline}
+
+```Bash
+echo Test File > test.txt
+echo Updated on %DATE% >> test.txt
+cls
+```
+
+![Task 5](images/Task5.jpeg)
+
+### 3.6 [Task 6: sin(x) Plotting]{.underline}
+
+```Bash
+cd gnuplot 
+"C:\Program Files\gnuplot\bin\gnuplot.exe" 
+plot sin(x)
+```
+![Task 6 - Script](images/Task6.jpeg)
+
+![Task 6 - Plot](images/Task6_gnu.jpeg)
+
+### 3.7 [Task 7: Directory listing ]{.underline}
+
+```Bash
+dir /b > bare\_list.txt 
+more bare\_list.txt
+
+```
+
+![Task 7](images/Task7.jpeg)
+
+---
