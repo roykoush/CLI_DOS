@@ -1,0 +1,20 @@
+reset
+set zeroaxis; set grid
+set xrange [0:10]; set yrange[:]
+
+
+set key outside right top
+
+f(x, a) = (a*x)**2 * exp(-a*x)
+
+$Maxima << EOD
+2.0000 0.5413
+1.0000 0.5413
+0.6667 0.5413
+EOD
+
+set arrow 1 from 2.0, 0.5413 to 2.0, 0 nohead lt 0 lw 1.5 lc 'black'
+set arrow 2 from 1.0, 0.5413 to 1.0, 0 nohead lt 0 lw 1.5 lc 'black'
+set arrow 3 from 0.6667, 0.5413 to 0.6667, 0 nohead lt 0 lw 1.5 lc 'black'
+
+plot f(x, 1) lw 2 lc 'red' title "a=1", f(x, 2) lw 2 lc 'green' title "a=2", f(x, 3) lw 2 lc 'blue' title "a=3", $Maxima w p pt 7 ps 2 lc 'black' title "Maxima"
