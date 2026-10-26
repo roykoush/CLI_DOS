@@ -1,8 +1,8 @@
 ---
-title: 'Data plotting, Visualisation and fitting with Gnuplot'
+title: 'Data Plotting, Visualisation and Fitting with Gnuplot'
 mainfont: "Times New Roman"
 monofont: "Courier New"
-fontsize: 12pt
+fontsize: 10pt
 linestretch: 1.15
 geometry: margin=1in
 toc: true
@@ -38,8 +38,6 @@ header-includes:
     \textbf{Date:} October 25, 2026
   }%
 }
-
-\pagebreak
 
 ## 1. Commands shown in Class - `plotlab1`
 
@@ -135,7 +133,6 @@ gnuplot> $data << EOD
 1.56 0.9998 
 2.34 0.567
 EOD
-gnuplot> ![alt text](image.png)
 ```
 
 ![Crosshairs mark the data points](images/data.png)
@@ -268,11 +265,7 @@ $$ y = a e^{-bx} $$
 
 $a$ and $b$ are the unknown constants. LSF finds the values of $a$ and $b$ for which this curve is closest to my data.
 
-For each data point, the vertical gap between the point and the curve is the **residual**:
-
-$$r_i = y_i - f(x_i)$$
-
-The **least squares** method chooses the parameters that make the sum of the squared residuals, $\sum r_i^2$, as small as possible. (Squaring stops positive and negative gaps from cancelling.) The fit is done step by step: gnuplot starts from a guess, improves it, and repeats. Each round is an **iteration**. gnuplot uses the *Levenberg-Marquardt* algorithm for this.
+> gnuplot uses the *Levenberg-Marquardt* algorithm for this.
 
 Let, `data.txt` contain:
 
@@ -323,7 +316,7 @@ plot f(x) lw 2 title 'Translated Sine', g(x) lw 1 title 'Linear Component'
 
 ### 1(b)
 
-Given, $ f(x) = x^2 + x + 1 = (x + \frac{1}{2})^2 + \frac{3}{4}$ so the y-intercept is $(0, 1)$.
+Given, $f(x) = x^2 + x + 1 = (x + \frac{1}{2})^2 + \frac{3}{4}$ so the y-intercept is $(0, 1)$.
 
 ```bash
 reset
@@ -425,6 +418,195 @@ plot f(x, 1) lw 2 lc 'red' title "a=1", f(x, 2) lw 2 lc 'green' title "a=2", f(x
 
 ### 2(a)
 
+```bash
+reset
+set zeroaxis; set grid
+set xrange [-8:8]; set yrange[-5:5]
+
+f(x) = x**3 + 1 - exp(x)
+
+plot f(x) title 'Function' lw 2 lc 'blue', 'data.txt' u 1:2 title 'Intercepts' w p pt 7 ps 1.5 lc 'red', 'data.txt' u 1:2:3  title '' w labels offset -6, -2 textcolor 'red'
+```
+
+![2(a)](images/2a.png)
+
+### 2(b) 
+
+```bash
+reset
+set zeroaxis; set grid
+set xrange [-2:2]; set yrange[-5:5]
+
+f(x) = 3*x**4 - 6*x**2
+
+$intercepts << EOD
+
+-1.4142     0         "(-1.41, 0)"
+0.0000      0         "(0.00, 0)"
+1.4142      0         "(1.41, 0)"
+EOD
+
+plot f(x) title 'Function' lw 2 lc 'blue', $intercepts u 1:2 title 'Intercepts' w p pt 7 ps 1.5 lc 'red', $intercepts u 1:2:3 title '' w labels offset 0,0.8 tc 'red'
+```
+
+![2(b)](images/2b.png)
+
+### 2(c)
+
+```bash
+reset
+set zeroaxis; set grid
+set xrange [-2:5]; set yrange[-2:10]
+
+g(x) = 5*exp(-0.5*x)
+h(x) = x + 1
+
+$intersection << EOD
+1.4372     2.4372     "(1.44, 2.44)"
+EOD
 
 
-## Exercises - `plotlab2`
+set arrow from 0.5, 2.437 to 1.4372, 2.437 head filled lw 3 lc 'black' 
+
+plot g(x) title 'g(x)' lw 2 lc 'blue', h(x) title 'h(x)' lw 2 lc 'green', $intersection u 1:2 title 'Intersection' w p pt 7 ps 1.5 lc 'red', $intersection u 1:2:3 title '' w labels offset 5.0, 0 tc 'red'
+```
+![2(c)](images/2c.png)
+
+### 2(d)
+
+```bash
+reset
+set zeroaxis; set grid
+set xrange [-2:8]; set yrange[-2:12]
+
+k(x) = x + 3*sin(2*x)
+dk(x) = 1 + 6*cos(2*x)
+f(x) = 4
+
+$intersections << EOD
+3.2678     4.0000     "(3.27, 4)"
+4.8582     4.0000     "(4.86, 4)"
+5.9338     4.0000     "(5.93, 4)"
+EOD
+
+plot k(x) title 'k(x)' lw 2.5 lc 'blue', f(x) title 'y = 4'  lw 1.5 lc 'black' dashtype 2, dk(x) title "k'(x)" lw 1.5 lc 'purple',  $intersections u 1:2 title "Intersections" w p pt 7 ps 1.5 lc "red", $intersections u 1:2:3 title "" w labels offset 0,0.8 tc "red"
+```
+
+![2(d)](images/2d.png)
+
+### 2(e)
+
+```bash
+reset
+set zeroaxis; set grid
+set xrange [0:100]; set yrange[-2:2]
+set samples 1000
+
+f(x) = exp(-x/100.0) * cos(x)
+upper_env(x) = exp(-x/100.0)
+lower_env(x) = -exp(-x/100.0)
+
+$envelope << EOD
+0.0000      1.0000     -1.0000
+100.0000    0.3679     -0.3679
+EOD
+
+
+plot f(x) title "f(x)" lw 2 lc "blue", \
+     upper_env(x) title "Envelope (+)" lw 1 lc "red" dashtype 2, \
+     lower_env(x) title "Envelope (-)" lw 1 linecolor "red" dashtype 2
+```
+
+![2(e)](images/2e.png)
+
+## 4. Exercises - `plotlab2`
+
+### 1(a)
+
+```bash
+reset
+set zeroaxis; set grid
+set xrange [-0.5:]; set yrange[-1:]
+
+
+plot 'simple1_dat.txt' title 'Points' w lp pt 7 ps 1.5 lw 2 lc 'blue'
+```
+
+![1(a)](images/21a.png)
+
+### 1(b)
+
+```bash
+reset
+set zeroaxis; set grid
+set xrange [-0.5:]; set yrange[-1:]
+
+
+plot 'data.txt' title 'Segmented Join' w lp pt 7 ps 1.5 lw 2 lc 'blue', 'data.txt' title 'Smoothening' smooth bezier lw 2
+```
+
+![1(b)](images/21b.png)
+
+### 1(c)
+
+**Important information extracted from the `.log` file:**
+
+Optimized Equation:f(x) = 415.728 * exp(-0.725453 * x)
+
+Parameter a: 415.728  (+/- 14.76)
+
+Parameter b: 0.725453 (+/- 0.02464)
+
+Iterations to Converge: 8
+
+Average Error (RMS of Residuals): 3.49735
+
+```bash
+reset
+set zeroaxis; set grid
+set xrange [1:7]; set yrange[-50:]
+
+f(x) = a*exp(-b*x)
+
+a = 200
+b = 1
+
+fit f(x) 'data.txt' u 1:2 via a, b
+
+plot 'data.txt' title 'Segmented Join' w lp pt 7 ps 1.5 lw 2, 'data.txt' title 'Smoothening' smooth csplines lw 2.5, 'data.txt' title 'Points' w p pt 7 ps 1.5, f(x) lw 2
+```
+
+![1(c)](images/22c.png)
+
+### 1(d)
+
+```bash
+reset
+set zeroaxis; set grid
+set xrange [:]; set yrange[:]
+
+
+set samples 1000
+
+set xlabel 'Time t(s)'; set ylabel 'Angle (mrad)'
+
+f(x) = theta0 + a * exp(-x / tau) * sin(2 * pi * x / T + phi)
+
+theta0 = 4.0
+a = 40.0
+tau = 60.0
+T = 13.5
+phi = -0.5
+
+fit f(x) 'cavendish_dat.txt' u 1:2:3 via theta0, a, tau, T, phi
+
+plot 'cavendish_dat.txt' index 0 u 1:2:3 title 'Ram (21st May)' w yerrorbars lw 2 pt 7 lc 'blue', \
+     'cavendish_dat.txt' index 1 u 1:2:3 title 'Sam (22nd May)' w yerrorbars lw 2 pt 7 lc 'green', \
+     f(x) title 'Best fit curve' lw 3 lc 'red'
+
+```
+
+![1(d)](images/21d.png)
+
+---
+
