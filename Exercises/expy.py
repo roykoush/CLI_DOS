@@ -1,18 +1,23 @@
-'''
-n = int(input('n: '))
+import turtle
+turtle.mode('logo')
 
-#Left justified
-for i in range(n+1):
-    print(('*'*i).ljust(n))
+def draw_polygon(s, l):
+    angle = 360 / s
+    for i in range(s):
+        turtle.fd(l)
+        turtle.rt(angle)
 
-#Right justified
-for i in range(n+1):
-    print(('*'*i).rjust(n))
+draw_polygon(3, 100)
 
-#Centre justified
-for i in range(n+1):
-    print(('*'*(2*i-1)).center(2*n-1))
-'''
-n = 26
-for i in range(27, 52):
-    print(i%26, end=',')
+# Move over to avoid drawing on top of each other
+turtle.up()
+turtle.rt(90)
+turtle.fd(150)
+turtle.lt(90)
+turtle.down()
+
+# Shape 2: Pentagon
+draw_polygon(5, 80)
+
+# 4. Hold the canvas screen open
+turtle.done()
