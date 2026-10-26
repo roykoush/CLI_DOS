@@ -1,23 +1,12 @@
-import turtle
-turtle.mode('logo')
+def print_butterfly(n):
+    for i in range(1, n + 1):
+        stars = "*" * i
+        spaces = " " * (2 * (n - i))
+        print(stars + spaces + stars)
 
-def draw_polygon(s, l):
-    angle = 360 / s
-    for i in range(s):
-        turtle.fd(l)
-        turtle.rt(angle)
+    for i in range(n, 0, -1):
+        stars = "*" * i
+        spaces = " " * (2 * (n - i))
+        print(stars + spaces + stars)
 
-draw_polygon(3, 100)
-
-# Move over to avoid drawing on top of each other
-turtle.up()
-turtle.rt(90)
-turtle.fd(150)
-turtle.lt(90)
-turtle.down()
-
-# Shape 2: Pentagon
-draw_polygon(5, 80)
-
-# 4. Hold the canvas screen open
-turtle.done()
+print_butterfly(5)

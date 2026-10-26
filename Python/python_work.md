@@ -14,13 +14,13 @@ header-includes:
   - \fancyhead[R]{\thepage}
   - \renewcommand{\headrulewidth}{0.5pt} 
   - \fancypagestyle{plain}{\fancyhf{}}
-  - \setkeys{Gin}{width=0.6\textwidth}
+  
   - \usepackage{fvextra}
   - \usepackage{framed}
   - \fvset{breaklines=true}
-  - \definecolor{shadecolor}{RGB}{248,248,248}
-  - \renewenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
-  - \usepackage{float}
+
+  
+
   - \makeatletter
   - \def\fps@figure{H}
   - \makeatother
@@ -121,6 +121,7 @@ for i in range(20):
     fd(30)
     done()
 ```
+
 ## Exercise 7
 
 ```python
@@ -133,19 +134,8 @@ def draw_polygon(s, l):
         turtle.fd(l)
         turtle.rt(angle)
 
-draw_polygon(3, 100)
-
-# Move over to avoid drawing on top of each other
-turtle.up()
-turtle.rt(90)
-turtle.fd(150)
-turtle.lt(90)
-turtle.down()
-
-# Shape 2: Pentagon
+draw_polygon(3, 100) 
 draw_polygon(5, 80)
-
-# 4. Hold the canvas screen open
 turtle.done()
 
 ```
@@ -156,6 +146,38 @@ turtle.done()
 n = int(input('Enter a number to get its multiplication table:'))
 for i in range(1,101):    
     print(n, 'x', i, '=', n*i)
+```
+
+## Exercise 9
+
+```python
+def print_butterfly(n):
+    for i in range(1, n + 1):
+        stars = "*" * i
+        spaces = " " * (2 * (n - i))
+        print(stars + spaces + stars)
+
+    for i in range(n, 0, -1):
+        stars = "*" * i
+        spaces = " " * (2 * (n - i))
+        print(stars + spaces + stars)
+
+print_butterfly(5)
+```
+
+Output:
+
+```
+*        *
+**      **
+***    ***
+****  ****
+**********
+**********
+****  ****
+***    ***
+**      **
+*        *
 ```
 
 ## Exercise 10
@@ -171,7 +193,40 @@ for i in range(10):
     right(144)done()
 ```
 
-#Exercise2#11
-st = "gcatgactattccttgac"ac = st.count('a')cc = st.count('c')gc_ = st.count('g')tc = st.count('t')print('The counts of a,c,g and t are respectively: ', ac, ',', cc, ',', gc_, ',', tc)
-#12
-st = "gcatgactattccttgac"print(st[::-1])
+## Exercise 11
+
+```python
+st = "gcatgactattccttgac"ac = st.count('a')
+cc = st.count('c')
+gc_ = st.count('g')
+tc = st.count('t')
+print('The counts of a,c,g and t are respectively: ', ac, ',', cc, ',', gc_, ',', tc)
+```
+
+## Exercise 12
+
+```python
+st = "gcatgactattccttgac"
+print(st[::-1])
+```
+
+## Exercise 13
+
+```python
+dna = "gcatgactattccttgac"
+sfe = dna[-6]
+print("6th base from the end:", sfe)
+```
+
+## Exercise 14
+
+```python
+dna = "gcatgactattccttgac"
+pos = []
+for i in range(len(dna)):
+    if dna[i] == 'a':
+        pos.append(i) 
+print("Positions of 'a' (0 index system):", pos)
+```
+
+---
