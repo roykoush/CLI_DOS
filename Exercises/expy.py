@@ -1,12 +1,13 @@
-def print_butterfly(n):
-    for i in range(1, n + 1):
-        stars = "*" * i
-        spaces = " " * (2 * (n - i))
-        print(stars + spaces + stars)
+import random
+from turtle import *
 
-    for i in range(n, 0, -1):
-        stars = "*" * i
-        spaces = " " * (2 * (n - i))
-        print(stars + spaces + stars)
+L = [0, 90, 180, 270]
+L2 = ['red', 'blue', 'green', 'purple']
+reset()
+mode('logo')
+for i in range(20):    
+    color(random.choice(L2))    
+    rt(random.choice(L))    
+    fd(30)
 
-print_butterfly(5)
+done()
