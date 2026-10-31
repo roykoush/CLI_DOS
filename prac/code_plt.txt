@@ -1,5 +1,0 @@
-reset
-set zeroaxis
-set xrange [:]; set yrange [:]
-set xlabel 'x'
-set ylabel 'y'

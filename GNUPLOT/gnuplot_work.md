@@ -302,7 +302,9 @@ The spline passes exactly through every point, while the fitted curve goes near 
 
 ### 1(a)
 
-In the case of $f(x)$, it is translated by plotting $sinx$ across the line $y = x$
+In the case of $f(x)$, it is translated by plotting $sinx$ across the line $y = x$. 
+
+![Rough sketch](images/1ad.jpeg)
 
 ```bash
 set zeroaxis; set grid
@@ -316,7 +318,9 @@ plot f(x) lw 2 title 'Translated Sine', g(x) lw 1 title 'Linear Component'
 
 ### 1(b)
 
-Given, $f(x) = x^2 + x + 1 = (x + \frac{1}{2})^2 + \frac{3}{4}$ so the y-intercept is $(0, 1)$.
+Given, $f(x) = x^2 + x + 1 = (x + \frac{1}{2})^2 + \frac{3}{4}$ so the y-intercept is $(0, 1)$. The y-intercept is obtained by obtaining $f(0)$.
+
+![Rough Sketch](images/1bd.jpeg)
 
 ```bash
 reset
@@ -341,7 +345,9 @@ plot f(x) lw 2 title 'Function', $YIntercept w p pt 7 ps 3 title 'Y-Intercept', 
 
 ### 1(c)
 
-The given function is $f(x) = x(x^2-1) = x(x-1)(x+1)$ so the three roots are $(-1,0)$, $(0,0)$, $(1,0)$.
+The given function is $f(x) = x(x^2-1) = x(x-1)(x+1)$ so the three roots are $(-1,0)$, $(0,0)$, $(1,0)$. The three roots are hence found out after factorising $f(x)$. 
+
+![Rough Sketch](images/1cd.jpeg)
 
 ```bash
 reset
@@ -371,7 +377,9 @@ plot f(x) lw 2 title 'Function', $Roots w p pt 7 ps 3 title 'Roots'
 
 ### 1(d)
 
-The given equation is $f(x) = \frac{x^2}{x-1} = x + 1 + \frac{1}{x-1}$ so as $x$ tends towards $\pm\infty$, the fractional part tends to 0 so the oblique asymtote is along $y = x+1$.
+The given equation is $f(x) = \frac{x^2}{x-1} = x + 1 + \frac{1}{x-1}$ so as $x$ tends towards $\pm\infty$, the fractional part tends to 0 so the oblique asymtote is along $y = x+1$. The other asymptote is when the denominator goes to zero hence along the line $x = 1$. The graph is constrained by these two asymptotes.
+
+![Rough Sketch](images/1dd.jpeg)
 
 ```bash
 reset
@@ -390,6 +398,10 @@ plot f(x) lw 2 title 'Function', g(x) lw 1.5 lc 'blue' dt 3 title 'Oblique Asymp
 ![1(d)](images/1(d).png)
 
 ### 1(e)
+
+By numerically solving the expression, all the maxima comes out on the line $y = 0.5413$ as has been shown in the rough sketch.
+
+![Rough Sketch](images/1ed.jpeg)
 
 ```bash
 reset

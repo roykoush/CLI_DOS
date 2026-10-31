@@ -434,12 +434,15 @@ for step in range(4):
     print(step)
     fd(100);rt(90)
 ```
+
 ```
 0
 1
 2
 3
 ```
+
+![Square demonstration](sq.jpeg)
 
 `reset()` deleted the square, we can start from the beginning. Using `sleep` would halt between the steps of drawing the sides of the square.
 
